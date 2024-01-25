@@ -9,9 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: golang:1.21-bookworm
-      env:
-        GOPATH: /__w/goreleaser-test/goreleaser-test
     steps:
+      - run: env
       - uses: actions/checkout@v4
       # - uses: actions/setup-go@v4
       #   with:
