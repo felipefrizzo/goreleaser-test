@@ -7,22 +7,5 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    container:
-      image: golang:1.21-bookworm
     steps:
-      - run: env
-      - uses: actions/checkout@v4
-      # - uses: actions/setup-go@v4
-      #   with:
-      #     go-version: 1.21
-      - run: go env
-      - uses: goreleaser/goreleaser-action@v5
-        with:
-          install-only: true
-      - run: goreleaser check
-      - run: goreleaser build --snapshot
-      - if: success()
-        uses: actions/upload-artifact@v3.1.3
-        with:
-          name: ${{ github.job }}
-          path: dist/
+      - run: env | grep GITHUB
